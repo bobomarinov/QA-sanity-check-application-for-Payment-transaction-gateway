@@ -2,12 +2,13 @@ import configparser
 from transactionClasses import *
 
 def LoadData():
+    #this function is used to load test transaction data from .ini file. Data is stored in 3 different arrays of objects.
     config = configparser.ConfigParser()
     config.sections()
     config.read('test.ini')
-    TransactionsArray = []
-    saleVoidTransactionsArray = []
-    saleVoidVoidTransactionsArray = []
+    TransactionsArray = [] #sale and void transaction data
+    saleVoidTransactionsArray = [] #sale transactions that are voided instantly
+    saleVoidVoidTransactionsArray = [] #sale transactions that are voided instantly and the trying to be voided again
 
 
     for section in config.sections():

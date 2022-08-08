@@ -3,13 +3,15 @@ import requests
 
 
 def ObjectToPaymentData(obj): 
+    #removing unnecesary brackets
     json_string = json.dumps(obj.__dict__)
     json_string = json_string.replace("[","")  
     json_string = json_string.replace("]","")
-    return json.loads(json_string)
+    return json.loads(json_string)   
 
 
 def ExecuteTransaction(transaction):
+    #function for executing API request. It takes transaction object as input.
     headers = {"Content-Type": "application/json;charset=UTF-8", "Authorization": getattr(transaction,"auth")}
     
     
@@ -21,6 +23,7 @@ def ExecuteTransaction(transaction):
     
 
 def readStatus(response):
+    #function for reading the status code and if it is 200 the whole response.
     print("Status code: " + str(response.status_code)) 
     if (response.status_code != 200):
         return response.status_code
