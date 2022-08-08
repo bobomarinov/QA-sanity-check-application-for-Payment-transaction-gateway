@@ -12,11 +12,13 @@ def ObjectToPaymentData(obj):
 def ExecuteTransaction(transaction):
     headers = {"Content-Type": "application/json;charset=UTF-8", "Authorization": getattr(transaction,"auth")}
     
+    
     data = {"payment_transaction": ObjectToPaymentData(transaction)
         }
-    request = requests.post(getattr(transaction,"url"), headers=headers, json=data) #passing 1 extra parameter. Still working
-    
+    request = requests.post(getattr(transaction,"url"), headers=headers, json=data) #passing multiple parameters irrelevant ot the API
     return request
+    
+    
 
 def readStatus(response):
     print("Status code: " + str(response.status_code)) 
