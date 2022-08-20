@@ -11,7 +11,7 @@ def LoadData():
     saleVoidVoidTransactionsArray = [] #sale transactions that are voided instantly and the trying to be voided again
 
 
-    for section in config.sections():
+    for section in config.sections(): #loop through the sections in the .ini file
         if (config[section]['transaction_type'] == 'sale'):
             TransactionsArray.append(SaleTransactionData( 
             config[section]['card_number'],
@@ -28,7 +28,7 @@ def LoadData():
             config[section]['testId'],
             config[section]['expectedStatusCode']
             ))
-        elif (config[section]['transaction_type'] == 'void'):
+        elif (config[section]['transaction_type'] == 'void'): #if the transaction type is void then add the data to the void transaction array
             TransactionsArray.append(VoidTransactionData( 
             config[section]['reference_id'],
             config[section]['auth'],
@@ -37,7 +37,7 @@ def LoadData():
             config[section]['expectedStatusCode'],
             config[section]['transaction_type'],
             ))
-        elif(config[section]['transaction_type'] == 'saleVoid'):
+        elif(config[section]['transaction_type'] == 'saleVoid'): #if the transaction type is saleVoid then add the data to the saleVoid transaction array
             saleVoidTransactionsArray.append(SaleTransactionData( 
             config[section]['card_number'],
             config[section]['cvv'],
@@ -53,7 +53,7 @@ def LoadData():
             config[section]['testId'],
             config[section]['expectedStatusCode']
             ))
-        elif(config[section]['transaction_type'] == 'saleVoidVoid'):
+        elif(config[section]['transaction_type'] == 'saleVoidVoid'): #if the transaction type is saleVoidVoid then add the data to the saleVoidVoid transaction array
             saleVoidVoidTransactionsArray.append(SaleTransactionData( 
             config[section]['card_number'],
             config[section]['cvv'],
@@ -69,4 +69,4 @@ def LoadData():
             config[section]['testId'],
             config[section]['expectedStatusCode']
             ))
-    return TransactionsArray , saleVoidTransactionsArray, saleVoidVoidTransactionsArray
+    return TransactionsArray , saleVoidTransactionsArray, saleVoidVoidTransactionsArray #return the arrays of objects
