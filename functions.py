@@ -15,7 +15,7 @@ def ExecuteTransaction(transaction):
     
     
     data = {"payment_transaction": ObjectToPaymentData(transaction) } #converting the object to the format required by the API and setting the data for the request
-    request = requests.post(getattr(transaction,"url"), headers=headers, json=data) #passing multiple parameters irrelevant ot the API
+    request = requests.post(getattr(transaction,"url"), headers=headers, json=data) #passing multiple parameters irrelevant of the API
     return request
     
     
